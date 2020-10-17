@@ -7,6 +7,7 @@ from django.db import models
 
 class Profile(models.Model):
     name = models.Charfield(max_length(60))
+    proile_photo = models.Imagefield(upload_to = 'instagram/')
     bio = models.Charfield(max_length(120))
     email = models.Charfield(max_length(30))
     username = models.Charfield(max_length(30))
@@ -22,6 +23,12 @@ class Profile(models.Model):
         self.bio = bio if bio else self.bio
         self.save()
 
+
+class Comments(models.Model):
+    commenter = models.Charfield(max_length(30))
+    comment = models.Textfield(max_length(500))
+
+
 class Photo(models.Model):
 
     name = models.Charfield(max_length(30))
@@ -29,6 +36,7 @@ class Photo(models.Model):
     user = models.ForeignKey(Profile, on_delete = models.CASCADE,)
     captions = models.Charfield(max_length(160))
     likes = models.Integerfield()
+    comments = models.ForeignKey(Comments, on_delete = models.CASCADE,)
 
     def savephoto(self):
         self.save()
@@ -43,3 +51,4 @@ class Photo(models.Model):
     def likephoto(self):
         self.likes = likes + 1
         self.save()
+
