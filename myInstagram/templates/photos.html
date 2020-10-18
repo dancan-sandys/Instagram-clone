@@ -5,7 +5,7 @@
 {% for photo in photos %}
 
 <p>{{photo}}</p>
-
+<img src="{{photo.photo_url.url}}" alt="image">
 {%endfor%}
 
 {% endblock %}
