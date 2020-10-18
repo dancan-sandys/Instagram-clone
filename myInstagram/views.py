@@ -14,7 +14,7 @@ def photos(request):
 
     Photos = Photo.objects.all()
 
-    return render(request, 'photos.html', {"photos":photos})
+    return render(request, 'photos.html', {"photos":Photos})
 
 def image(request, id):
 
