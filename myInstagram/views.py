@@ -10,6 +10,7 @@ def profile(request, id):
 
     return render(request, 'profile.html', {"user":user})
 
+@login_required(login_url= '/accounts/login/')
 def photos(request):
 
     Photos = Photo.objects.all()
