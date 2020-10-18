@@ -1,5 +1,6 @@
-from django.shortcuts import render, request
-from models import Photo,Profile,Comments
+from django.shortcuts import render
+from .models import Photo,Profile,Comments
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -20,3 +21,9 @@ def image(request, id):
     image = Photo.objects.get(id =id)
 
     return render(request, 'image.html', {"photo": image})
+
+
+
+def search(request):
+
+    return render(request, 'search.html')
