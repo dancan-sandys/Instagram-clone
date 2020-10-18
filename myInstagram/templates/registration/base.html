@@ -1,27 +1,22 @@
-{% extends 'base.html'%}
-{% load bootstrap3 %}
+
+{% load bootstrap3 %} 
 {% load staticfiles %}
+
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-  {%if title%}
-
-  <title>{{title}}</title>
-
-  {%endif%}
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
-
 <body>
+{% block styles %}
+  {% bootstrap_css %}
+{% endblock %}
 
-  {% block content %}  {%endblock%}
+{%block content%}
 
+{%endblock%}
+  
 </body>
-
 </html>
