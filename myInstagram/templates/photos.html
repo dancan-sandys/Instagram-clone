@@ -1,12 +1,26 @@
 {%extends 'base.html'%}
 
 {% block content%}
-<p>Yes</p>
+
+{%block styles%}
+{{block.super}}
+<link rel="stylesheet" href="../static/home.css">
+
+{%endblock%}
+
 {% for photo in photos %}
 
-<p>{{photo}}</p>
-<img src="../../media/photos/pexels-karolina-grabowska-4386467.jpg" alt="image">
-<img src="../static/pexels-karolina-grabowska-4386467.jpg" alt="">
+<div class="post">
+  
+    <h4 class="username">{{photo.user}}</h4>
+
+    <img src="../../media/photos/pexels-karolina-grabowska-4386467.jpg" alt="image">
+    <p>{{photo.name}}</p>
+    <p>{{photo.captions}}</p>
+    <p>{{photo.likes}}</p>
+</div>
 {%endfor%}
+
+
 
 {% endblock %}

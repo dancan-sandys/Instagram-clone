@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-
+import tinymce
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'myInstagram.apps.MyinstagramConfig',
     'bootstrap3',
     'tinymce',
-    'pillow'
+    
 ]
 
 MIDDLEWARE = [

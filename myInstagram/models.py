@@ -44,7 +44,6 @@ class Photo(models.Model):
     name = models.CharField(max_length =30)
     photo_url = models.CharField(max_length=20)
     user = models.ForeignKey(User, on_delete = models.CASCADE,)
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE,)
     captions = models.CharField(max_length =160)
     likes = models.IntegerField()
     comments = models.ForeignKey(Comments, on_delete = models.CASCADE,)
