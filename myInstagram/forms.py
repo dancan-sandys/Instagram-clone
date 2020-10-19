@@ -14,4 +14,4 @@ class UpdateProfile(forms.ModelForm):
 class Comment(forms.ModelForm):
     class Meta:
         model = Comments
-        exclude = ['user']
+        exclude = ['user', 'photo']

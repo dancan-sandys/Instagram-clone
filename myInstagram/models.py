@@ -24,21 +24,6 @@ class Profile(models.Model):
         self.save()
 
     
-
-class Comments(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    comment = models.TextField(max_length = 500)
-
-    def savecomments(self):
-        self.save()
-
-    def deletecomments(self):
-        self.delete()
-
-    def updatecomments(self, comment):
-        self.comment = comment if comment else self.comment
-        self.save()
-
 class Photo(models.Model):
 
     name = models.CharField(max_length =30)
@@ -63,3 +48,18 @@ class Photo(models.Model):
         self.likes = likes + 1
         self.save()
 
+
+class Comments(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.TextField(max_length = 500)
+    photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
+
+    def savecomments(self):
+        self.save()
+
+    def deletecomments(self):
+        self.delete()
+
+    def updatecomments(self, comment):
+        self.comment = comment if comment else self.comment
+        self.save()

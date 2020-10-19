@@ -67,13 +67,17 @@ def profileupdate(request):
 
         return render(request, 'updateprofile.html',{"form":form})
 
-def new_comment(request):
+def new_comment(request, id):
     current_user = request.user
+    photo = Photo.objects.get(id =id)
     if request.method == 'POST':
         form = Comment(request.POST, request.FILES)
         if form.is_valid():
+            
             comment = form.save(commit=False)
             comment.user = current_user
+            comment.photo = photo
+            
 
             comment.save()
         return redirect('photos')     
@@ -81,7 +85,7 @@ def new_comment(request):
     else:
         form = Comment()       
 
-        return render(request, 'comment.html', {"form":form})
+        return render(request, 'comment.html', {"form":form, "photo":photo})
 
 def like(request, id):
     photo = Photo.objects.get(id = id)

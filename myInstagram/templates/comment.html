@@ -5,14 +5,16 @@
 {%block content%}
 
 {% block styles %}
+    <link rel="stylesheet" href="../static/bootstrap.css">
+    <link rel="stylesheet" href="../static/comment.css">
     {% bootstrap_css %}
 {% endblock %}
 
     
-    <form action="{% url 'comment'%}" method="POST" enctype="multipart/form-data">
+    <form class="btn-success container commentform" action="{% url 'comment' photo.id%}" method="POST" enctype="multipart/form-data">
         {%csrf_token%}
         {%bootstrap_form form%}
-        <input type="submit" value="Post">
+        <input type="submit" value="Comment">
     </form>
 
 {%endblock%}

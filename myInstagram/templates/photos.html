@@ -9,29 +9,37 @@
 {%endblock%}
 
 {% for photo in photos %}
+<div class="row">
+    <div class="post card col-md-8">
 
-<div class="post card">
+        <h4 class="username card-header">{{photo.user}}</h4>
 
-    <h4 class="username card-header">{{photo.user}}</h4>
+        <img src="{{photo.photo_url.url}}" alt="image">
+        <div class="card-footer">
+            <p>{{photo.name}}</p>
+            <p>{{photo.captions}}</p>
 
-    <img src="{{photo.photo_url.url}}" alt="image">
-    <div class="card-footer">
-        <p>{{photo.name}}</p>
-        <p>{{photo.captions}}</p>
-        
 
-        <div>
-            <a href="" class="btn-success btn button">
-                {{photo.likes}} likes
-            </a>
-            <a href="/like/{{photo.id}}" class="btn-primary btn button">
-                Like
-            </a>
-            <a href="/comment/" class="btn-info btn button">
-                Comment
-            </a>
+            <div>
+                <a href="" class="btn-success btn button">
+                    {{photo.likes}} likes
+                </a>
+                <a href="/like/{{photo.id}}" class="btn-primary btn button">
+                    Like
+                </a>
+                <a href="/comment/{{photo.id}}" class="btn-info btn button">
+                    Comment
+                </a>
+            </div>
         </div>
     </div>
+
+    <div class="col-md-3 comments">
+        <h4>Comments</h4>
+        
+    </div>
+
+
 </div>
 
 {%endfor%}
