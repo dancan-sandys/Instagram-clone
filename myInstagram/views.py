@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Photo,Profile,Comments
 from django.contrib.auth.decorators import login_required
-from .forms import NewPhotoForm, UpdateProfile
+from .forms import NewPhotoForm, UpdateProfile, Comment
 
 # Create your views here.
 
@@ -63,3 +63,19 @@ def profileupdate(request):
         form = UpdateProfile()
 
         return render(request, 'updateprofile.html'{"form":form})
+
+def new_comment(request):
+    current_user = request.current_user
+    if request.method = 'POST':
+        form = Comment(request.POST, request.FILES)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = current_user
+
+            comment.save()
+        return redirect('photos')     
+
+    else:
+        form = Comment()       
+
+        return render(request, 'comment.hmtl', {"form":form})
