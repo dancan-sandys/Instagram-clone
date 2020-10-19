@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+
+
 # Create your models here.
 
 
@@ -7,8 +9,8 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     name = models.CharField(max_length = 60)
-    profile_photo = models.ImageField(upload_to = 'instagram/')
-    bio = models.CharField(max_length =120)
+    profile_photo = models.CharField(max_length=20)
+    bio = models.CharField(max_length =130)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def saveprofile(self):
@@ -40,7 +42,7 @@ class Comments(models.Model):
 class Photo(models.Model):
 
     name = models.CharField(max_length =30)
-    photo_url = models.ImageField(upload_to = 'instagram/')
+    photo_url = models.CharField(max_length=20)
     user = models.ForeignKey(User, on_delete = models.CASCADE,)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE,)
     captions = models.CharField(max_length =160)

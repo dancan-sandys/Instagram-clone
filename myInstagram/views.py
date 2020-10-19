@@ -39,8 +39,7 @@ def addphotos(request):
             photo.user = current_user
 
             photo.save()
-
-        return redirect('photos')
+        return render(request, 'post.html',{"form": form, "photo":photo})
 
     else:
         form = NewPhotoForm()
@@ -50,23 +49,23 @@ def addphotos(request):
 
 def profileupdate(request):
     current_user = request.user
-    if request.method = 'POST':
+    if request.method == 'POST':
         form = UpdateProfile(request.POST, request.FILES)
         if form.is_valid():
             profile = form.save(commit=False)
             profile.user = current_user
             profile.save()
 
-        return redirect('photos')
+        return render(request, 'updateprofile.html',{"form":form})
 
     else:
         form = UpdateProfile()
 
-        return render(request, 'updateprofile.html'{"form":form})
+        return render(request, 'updateprofile.html',{"form":form})
 
 def new_comment(request):
-    current_user = request.current_user
-    if request.method = 'POST':
+    current_user = request.user
+    if request.method == 'POST':
         form = Comment(request.POST, request.FILES)
         if form.is_valid():
             comment = form.save(commit=False)
@@ -78,4 +77,4 @@ def new_comment(request):
     else:
         form = Comment()       
 
-        return render(request, 'comment.hmtl', {"form":form})
+        return render(request, 'comment.html', {"form":form})
