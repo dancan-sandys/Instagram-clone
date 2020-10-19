@@ -87,3 +87,5 @@ def like(request, id):
     photo = Photo.objects.get(id = id)
     photo.likes = photo.likes + 1
     photo.save()
+
+    return redirect('photos')     
