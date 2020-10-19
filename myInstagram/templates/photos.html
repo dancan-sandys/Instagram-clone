@@ -10,15 +10,18 @@
 
 {% for photo in photos %}
 
-<div class="post">
-  
-    <h4 class="username">{{photo.user}}</h4>
+<div class="post card">
 
-    <img src="../../media/photos/pexels-karolina-grabowska-4386467.jpg" alt="image">
-    <p>{{photo.name}}</p>
-    <p>{{photo.captions}}</p>
-    <p>{{photo.likes}}</p>
+    <h4 class="username card-header">{{photo.user}}</h4>
+
+    <img src="{{photo.photo_url.url}}" alt="image">
+    <div class="card-footer">
+        <p>{{photo.name}}</p>
+        <p>{{photo.captions}}</p>
+        <p>{{photo.likes}}</p>
+    </div>
 </div>
+
 {%endfor%}
 
 

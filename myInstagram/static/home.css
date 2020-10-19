@@ -1,5 +1,5 @@
 img{
-    width: 50%;
+    width: 100%;
 }
 
 body{
@@ -8,5 +8,11 @@ body{
 
 .username{
     text-align: left;
-    margin-left: 25%;
+    
+}
+
+.post{
+    width: 50%;
+    margin-top: 4%;
+    margin-left: 20%;
 }
