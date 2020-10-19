@@ -16,7 +16,9 @@ def photos(request):
 
     Photos = Photo.objects.all()
     Profiles = Profile.objects.all()
-    return render(request, 'photos.html', {"photos":Photos, "profiles":Profiles})
+    comments = Comments.objects.all()
+
+    return render(request, 'photos.html', {"photos":Photos, "profiles":Profiles, "comments":comments})
 
 def image(request, id):
 
