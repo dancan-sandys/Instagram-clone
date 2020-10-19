@@ -9,9 +9,7 @@ class Profile(models.Model):
     name = models.CharField(max_length = 60)
     profile_photo = models.ImageField(upload_to = 'instagram/')
     bio = models.CharField(max_length =120)
-    email = models.CharField(max_length  = 30)
-    username = models.CharField(max_length = 30)
-    password = models.CharField(max_length =30)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def saveprofile(self):
         self.save()
@@ -23,11 +21,21 @@ class Profile(models.Model):
         self.bio = bio if bio else self.bio
         self.save()
 
+    
 
 class Comments(models.Model):
-    commenter = models.CharField(max_length = 30)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     comment = models.TextField(max_length = 500)
 
+    def savecomments(self):
+        self.save()
+
+    def deletecomments(self):
+        self.delete()
+
+    def updatecomments(self, comment):
+        self.comment = comment if comment else self.comment
+        self.save()
 
 class Photo(models.Model):
 
@@ -38,7 +46,7 @@ class Photo(models.Model):
     captions = models.CharField(max_length =160)
     likes = models.IntegerField()
     comments = models.ForeignKey(Comments, on_delete = models.CASCADE,)
-    date = models.DateTimeField(auto_now_add=True)
+
 
     def savephoto(self):
         self.save()
@@ -46,8 +54,8 @@ class Photo(models.Model):
     def deletephoto(self):
         self.delete()
 
-    def updatephoto(self, bio):
-        self.bio = bio if bio else self.bio
+    def updatephoto(self, photo):
+        self.photo_url = photo if photo else self.photo_url
         self.save()
 
     def likephoto(self):

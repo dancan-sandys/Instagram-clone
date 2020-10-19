@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Photo,Profile,Comments
 from django.contrib.auth.decorators import login_required
-from .forms import NewPhotoForm
+from .forms import NewPhotoForm, UpdateProfile
 
 # Create your views here.
 
@@ -32,7 +32,7 @@ def search(request):
 
 def addphotos(request):
     current_user = request.user 
-    if request.method = 'POST':
+    if request.method == 'POST':
         form = NewPhotoForm(request.POST, request.FILES)
         if form.is_valid():
             photo = form.save(commit = False)
@@ -45,4 +45,21 @@ def addphotos(request):
     else:
         form = NewPhotoForm()
 
-        return render(request, 'post.html'{"form": form})
+        return render(request, 'post.html',{"form": form})
+
+
+def profileupdate(request):
+    current_user = request.user
+    if request.method = 'POST':
+        form = UpdateProfile(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            profile.save()
+
+        return redirect('photos')
+
+    else:
+        form = UpdateProfile()
+
+        return render(request, 'updateprofile.html'{"form":form})
