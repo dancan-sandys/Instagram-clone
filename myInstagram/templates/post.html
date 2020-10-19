@@ -4,7 +4,13 @@
 
 {% block content%}
     
-    <form action="{% url 'addphotos' %}" method="post" enctype="multipart/form-data">
+    {% block styles %}
+    {{block.super}}
+    <link rel="stylesheet" href="../static/post.css">
+
+    {%endblock%}
+
+    <form class="form container btn-success postform" action="{% url 'addphotos' %}" method="post" enctype="multipart/form-data">
         {%csrf_token%}
         {%bootstrap_form form%}
         <input type="submit" value="Post">

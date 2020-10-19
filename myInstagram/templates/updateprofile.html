@@ -3,8 +3,14 @@
 {%load staticfiles%}
 
 {% block content%}
+    {%block styles%}
+    {{block.super}}
+    <link rel="stylesheet" href="../static/bootstrap.css">
+    <link rel="stylesheet" href="../static/profile.css">
+    {%endblock%}
+
     
-    <form action="{% url 'addphotos' %}" method="post" enctype="multipart/form-data">
+    <form class="form container form profileform btn-success " action="{% url 'profileupdate' %}" method="post" enctype="multipart/form-data">
         {%csrf_token%}
         {%bootstrap_form form%}
         <input type="submit" value="Post">

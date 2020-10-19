@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Photo,Profile,Comments
 from django.contrib.auth.decorators import login_required
 from .forms import NewPhotoForm, UpdateProfile, Comment
@@ -35,8 +35,11 @@ def addphotos(request):
     if request.method == 'POST':
         form = NewPhotoForm(request.POST, request.FILES)
         if form.is_valid():
+            
             photo = form.save(commit = False)
             photo.user = current_user
+            photo.likes = 0
+            photo.comments = 1
 
             photo.save()
         return render(request, 'post.html',{"form": form, "photo":photo})
@@ -55,8 +58,9 @@ def profileupdate(request):
             profile = form.save(commit=False)
             profile.user = current_user
             profile.save()
+            id = 1
 
-        return render(request, 'updateprofile.html',{"form":form})
+        return redirect('photos')
 
     else:
         form = UpdateProfile()
@@ -78,3 +82,8 @@ def new_comment(request):
         form = Comment()       
 
         return render(request, 'comment.html', {"form":form})
+
+def like(request, id):
+    photo = Photo.objects.get(id = id)
+    photo.likes = photo.likes + 1
+    photo.save()

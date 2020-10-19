@@ -9,8 +9,8 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     name = models.CharField(max_length = 60)
+    bio = models.TextField(max_length =130)
     profile_photo = models.ImageField(upload_to = 'profile/')
-    bio = models.CharField(max_length =130)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def saveprofile(self):
@@ -46,7 +46,7 @@ class Photo(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE,)
     captions = models.CharField(max_length =160)
     likes = models.IntegerField()
-    comments = models.ForeignKey(Comments, on_delete = models.CASCADE,)
+    
 
 
     def savephoto(self):

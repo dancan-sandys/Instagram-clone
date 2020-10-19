@@ -18,7 +18,19 @@
     <div class="card-footer">
         <p>{{photo.name}}</p>
         <p>{{photo.captions}}</p>
-        <p>{{photo.likes}}</p>
+        
+
+        <div>
+            <a href="" class="btn-success btn button">
+                {{photo.likes}} likes
+            </a>
+            <a href="{% url 'like'%}" class="btn-primary btn button">
+                Like
+            </a>
+            <a href="" class="btn-info btn button">
+                Comment
+            </a>
+        </div>
     </div>
 </div>
 
