@@ -26,12 +26,12 @@ class Profile(models.Model):
     
 class Photo(models.Model):
 
-    name = models.CharField(max_length =30)
     photo_url = models.ImageField(upload_to= 'photos/')
+    name = models.CharField(max_length =100)
     user = models.ForeignKey(User, on_delete = models.CASCADE,)
-    captions = models.CharField(max_length =160)
     likes = models.IntegerField()
-    
+    captions = models.TextField(max_length =160)  
+      
 
 
     def savephoto(self):
@@ -68,3 +68,5 @@ class Comments(models.Model):
     def updatecomments(self, comment):
         self.comment = comment if comment else self.comment
         self.save()
+class Followers(models.Model):
+    user = models.CharField(max_length=30)

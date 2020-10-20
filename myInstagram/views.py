@@ -2,15 +2,23 @@ from django.shortcuts import render, redirect
 from .models import Photo,Profile,Comments
 from django.contrib.auth.decorators import login_required
 from .forms import NewPhotoForm, UpdateProfile, Comment
+from django.contrib.auth.models import User
 
 # Create your views here.
 
 #user profile
 @login_required(login_url= '/accounts/login/')
 def profile(request, id):
-    user = Profile.objects.get(id = id)
-
-    return render(request, 'profile.html', {"user":user})
+    try:
+        user = User.objects.get(id = id)
+        profile = Profile.objects.get(user = user)
+    except:
+        profile = None
+   
+    if profile == None:
+        return redirect('profileupdate')
+    else:
+        return render(request, 'profile.html', {"user":profile})
 
 @login_required(login_url= '/accounts/login/')
 def photos(request):
@@ -72,7 +80,7 @@ def profileupdate(request):
             profile = form.save(commit=False)
             profile.user = current_user
             profile.save()
-            id = 1
+            
 
         return redirect('photos')
 
@@ -102,7 +110,7 @@ def new_comment(request, id):
 
         return render(request, 'comment.html', {"form":form, "photo":photo})
 
-
+@login_required(login_url= '/accounts/login/')
 def like(request, id):
     photo = Photo.objects.get(id = id)
     photo.likes = photo.likes + 1

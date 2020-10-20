@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="../static/profile.css">
     {%endblock%}
 
-    
-    <form class="form container form profileform btn-success " action="{% url 'profileupdate' %}" method="post" enctype="multipart/form-data">
+    <h4>Set Up your Profile</h4>
+    <form class="form container form profileform btn-info " action="{% url 'profileupdate' %}" method="post" enctype="multipart/form-data">
         {%csrf_token%}
         {%bootstrap_form form%}
         <input type="submit" value="Post">
