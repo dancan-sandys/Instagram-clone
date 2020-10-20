@@ -30,7 +30,16 @@ def image(request, id):
 
 def search(request):
 
-    return render(request, 'search.html')
+    if 'username' in request.GET and request.GET["username"]:
+        searched_term = request.GET.get("username")
+        searched_photos = Photo.search(searched_term)
+
+        return render(request, 'search.html', {"results":searched_photos})
+
+    else:
+        message = 'The search term you entered is not available'
+
+        return render(request, 'search.html', {"message":message})
 
 def addphotos(request):
     current_user = request.user 

@@ -48,6 +48,11 @@ class Photo(models.Model):
         self.likes = likes + 1
         self.save()
 
+    @classmethod
+    def search(cls, searched_term):
+        user = User.objects.filter(username=searched_term)
+        photos = Photo.objects.filter(user=user)
+        return photos
 
 class Comments(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
