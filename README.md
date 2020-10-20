@@ -25,6 +25,7 @@ https://sandysinstagram.herokuapp.com/
 |User wants to view posted photos and he/she has an account| The user logs in| He/she is redirected to the home page which contains the posted photos , their comments , their likes and buttons to allow on e to like or comment on the photos|
 |User wants to set up his/her profile|User navigates to the profiles page from the navigation bar|He/she is directed to a form from which he/she is able to set up his/her account profile|
 |User wants to post a photo|User clicks on the post button on his/her profile page|He/she is redirected to a posting page where he/she can upload his/her photos| 
+|User wants to search posts by a particular user|user enters the user's username in the search query| user is redirected to a page with that particular user's posts|
 
 
 
