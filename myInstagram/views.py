@@ -6,6 +6,7 @@ from .forms import NewPhotoForm, UpdateProfile, Comment
 # Create your views here.
 
 #user profile
+@login_required(login_url= '/accounts/login/')
 def profile(request, id):
     user = Profile.objects.get(id = id)
 
@@ -20,6 +21,7 @@ def photos(request):
 
     return render(request, 'photos.html', {"photos":Photos, "profiles":Profiles, "comments":comments})
 
+@login_required(login_url= '/accounts/login/')
 def image(request, id):
 
     image = Photo.objects.get(id =id)
@@ -27,7 +29,7 @@ def image(request, id):
     return render(request, 'image.html', {"photo": image})
 
 
-
+@login_required(login_url= '/accounts/login/')
 def search(request):
 
     if 'username' in request.GET and request.GET["username"]:
@@ -41,6 +43,7 @@ def search(request):
 
         return render(request, 'search.html', {"message":message})
 
+@login_required(login_url= '/accounts/login/')
 def addphotos(request):
     current_user = request.user 
     if request.method == 'POST':
@@ -60,7 +63,7 @@ def addphotos(request):
 
         return render(request, 'post.html',{"form": form})
 
-
+@login_required(login_url= '/accounts/login/')
 def profileupdate(request):
     current_user = request.user
     if request.method == 'POST':
@@ -78,6 +81,7 @@ def profileupdate(request):
 
         return render(request, 'updateprofile.html',{"form":form})
 
+@login_required(login_url= '/accounts/login/')
 def new_comment(request, id):
     current_user = request.user
     photo = Photo.objects.get(id =id)
@@ -97,6 +101,7 @@ def new_comment(request, id):
         form = Comment()       
 
         return render(request, 'comment.html', {"form":form, "photo":photo})
+
 
 def like(request, id):
     photo = Photo.objects.get(id = id)
