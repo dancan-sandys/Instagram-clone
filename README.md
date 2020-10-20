@@ -1,16 +1,16 @@
-# My Gallery
+# Sandys Instagram
 
-####  This application allows one to blog, view other people's blogs, comment on them.
+####  This is an instagram prototype.
 
 ### dated on:
-10/12/2020
+10/20/2020
 
 #### By **Dancan Sandys Oruko**
 
 ## Description
-This app allows a user to view an array of images from different categories and the location and time the images were taken.
+This app allows a user to post photos ,view other people's photos, comment and like.
 ## live link
-https://sandysgallery.herokuapp.com/
+https://sandysinstagram.herokuapp.com/
 
 ## Pre-requisite necesities to run the app
 
@@ -21,10 +21,10 @@ https://sandysgallery.herokuapp.com/
 
 |Given | When | Then|
 |------|-----------|-------|
-|User wants to view the gallery|The opens the site using the link| THe home.html loads and the user is able to see an array of sorted into different categories|
-|User wants to look into an image and its details| The user clicks on the image|A page with an enlarged version of the image together with details on the image is loaded|
-|User wants to search for images by category| User enters the category in the search input field|User is redirect to a page with the search results which include the images of the searched category if available|
-|User wants to copy the image url| User right clicks on the image and selects the copy option|The ur; is copied to the dashboard | 
+|User wants to use view photos and he/she doesn't have an account|The opens the site using the link| He/she is redirected to a sign in page from which he/she can navigate to the sign up page incase he/she doesn't have an account|
+|User wants to view posted photos and he/she has an account| The user logs in| He/she is redirected to the home page which contains the posted photos , their comments , their likes and buttons to allow on e to like or comment on the photos|
+|User wants to set up his/her profile|User navigates to the profiles page from the navigation bar|He/she is directed to a form from which he/she is able to set up his/her account profile|
+|User wants to post a photo|User clicks on the post button on his/her profile page|He/she is redirected to a posting page where he/she can upload his/her photos| 
 
 
 

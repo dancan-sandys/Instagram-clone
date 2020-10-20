@@ -82,7 +82,7 @@ def profileupdate(request):
             profile.save()
             
 
-        return redirect('photos')
+        return redirect('profile')
 
     else:
         form = UpdateProfile()
